@@ -52,6 +52,10 @@
         padding: 35px;
         display: flex;
         background: #e3e3e3;
+        font-size: 16px;
+        color: #141827;
+        font-family: "Barlow";
+        margin-top: 0;
       }
       .first-container img {
         border-radius: 20px;
@@ -59,7 +63,7 @@
       .paragraph::before {
         content: "Food Recipes";
         color: orange;
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     </style>
   </head>
@@ -82,25 +86,25 @@
       </div>
       <div id="show-meals"></div>
     </form>
-      <div class="first-container">
-        <div class="paragraph">
-          <p>
-            Welcome to the Food Recipes Collection, where nourishment meets
-            intention. Explore a diverse array of delicious, health-conscious
-            recipes inspired by the yogic lifestyle. Whether you’re looking to
-            energize your morning, rejuvenate after a long day, or celebrate
-            with friends and family.
-          </p>
-          <p>
-            From hearty lacto-vegetarian dishes to refreshing beverages and
-            sweet treats, every recipe is designed to uplift your spirit and
-            nourish your body. Dive into a world of wholesome ingredients,
-            vibrant flavors, and culinary inspiration that aligns with your
-            journey toward a balanced and fulfilling life.
-          </p>
-        </div>
-        <img src="./food recipe image.jpg" alt="" />
+    <div class="first-container">
+      <div class="paragraph">
+        <p>
+          Welcome to the Food Recipes Collection, where nourishment meets
+          intention. Explore a diverse array of delicious, health-conscious
+          recipes inspired by the yogic lifestyle. Whether you’re looking to
+          energize your morning, rejuvenate after a long day, or celebrate with
+          friends and family.
+        </p>
+        <p>
+          From hearty lacto-vegetarian dishes to refreshing beverages and sweet
+          treats, every recipe is designed to uplift your spirit and nourish
+          your body. Dive into a world of wholesome ingredients, vibrant
+          flavors, and culinary inspiration that aligns with your journey toward
+          a balanced and fulfilling life.
+        </p>
       </div>
+      <img src="./food recipe image.jpg" alt="" />
+    </div>
     <script>
       async function getMeals() {
         try {
