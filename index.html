@@ -110,12 +110,10 @@
         try {
           const userInputRef = document.querySelector("#userinput");
           const userInputs = userInputRef.value;
-          console.log(userInputs);
           const mealsApi = await fetch(
             `https://www.themealdb.com/api/json/v1/1/search.php?s=${userInputs}`,
           );
           const dataFromApi = await mealsApi.json();
-          console.log(dataFromApi);
           const mealsfromApi = dataFromApi.meals;
           const mealsRef = document.querySelector("#show-meals");
           mealsRef.innerHTML = "";
