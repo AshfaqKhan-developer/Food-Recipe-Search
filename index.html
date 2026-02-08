@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Module Project 2 - Food Recipe Search</title>
+    <style>
+      body {
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      .main-container {
+        background: rgb(251, 248, 255);
+        text-align: center;
+        padding: 15px;
+      }
+      .meals-iamge {
+        width: 200px;
+        height: auto;
+      }
+      .userinput {
+        padding: 7px;
+        border: 1px solid #959595;
+        border-radius: 2px;
+      }
+      .userinput:focus {
+        outline: none;
+        border: 1px solid #959595;
+        border-radius: 2px;
+      }
+      .card h2 {
+        color: rgb(231, 86, 2);
+      }
+      button {
+        padding: 7px;
+        border: 1px solid #959595;
+        border-radius: 2px;
+      }
+      .card {
+        margin: 4px;
+        padding: 19px;
+        border-radius: 14px;
+        text-align: center;
+        color: white;
+        background: #0a0a0a;
+      }
+      #show-meals {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .first-container {
+        padding: 35px;
+        display: flex;
+        background: #e3e3e3;
+      }
+      .first-container img {
+        border-radius: 20px;
+      }
+      .paragraph::before {
+        content: "Food Recipes";
+        color: orange;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      onsubmit="
+        getMeals();
+        return false;
+      "
+    >
+      <div class="main-container">
+        <h2>Welcome to Food Recipe</h2>
+        <input
+          type="text"
+          id="userinput"
+          class="userinput"
+          placeholder="Search here"
+        />
+        <button type="submit">Search</button>
+      </div>
+      <div id="show-meals"></div>
+    </form>
+      <div class="first-container">
+        <div class="paragraph">
+          <p>
+            Welcome to the Food Recipes Collection, where nourishment meets
+            intention. Explore a diverse array of delicious, health-conscious
+            recipes inspired by the yogic lifestyle. Whether you’re looking to
+            energize your morning, rejuvenate after a long day, or celebrate
+            with friends and family.
+          </p>
+          <p>
+            From hearty lacto-vegetarian dishes to refreshing beverages and
+            sweet treats, every recipe is designed to uplift your spirit and
+            nourish your body. Dive into a world of wholesome ingredients,
+            vibrant flavors, and culinary inspiration that aligns with your
+            journey toward a balanced and fulfilling life.
+          </p>
+        </div>
+        <img src="./food recipe image.jpg" alt="" />
+      </div>
+    <script>
+      async function getMeals() {
+        try {
+          const userInputRef = document.querySelector("#userinput");
+          const userInputs = userInputRef.value;
+          console.log(userInputs);
+          const mealsApi = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/search.php?s=${userInputs}`,
+          );
+          const dataFromApi = await mealsApi.json();
+          console.log(dataFromApi);
+          const mealsfromApi = dataFromApi.meals;
+          const mealsRef = document.querySelector("#show-meals");
+          mealsRef.innerHTML = "";
+          mealsfromApi.forEach((item) => {
+            mealsRef.innerHTML += ` <div class="card"> <img src=" ${
+              item.strMealThumb
+            }" class = "meals-iamge" alt="meals image"> 
+            <h2>${item.strMeal}</h2>
+            <p>Meal ID: ${item.idMeal}</p>
+            <p>Category: ${item.strCategory}</p>
+            <p>Country: ${item.strArea}</p>
+         </div>`;
+          });
+          userInputRef.value = "";
+          changeHeaderColor();
+        } catch (err) {
+          console.log(err, "something went wrong please try later");
+        }
+      }
+      function changeHeaderColor() {
+        const bodyRef = document.querySelector("body");
+        const mainContainerRef = document.querySelector(".main-container");
+        // console.log(mainContainerRef);
+        mainContainerRef.style.color = "white";
+        mainContainerRef.style.background = "black";
+        bodyRef.style.background = "black";
+      }
+    </script>
+  </body>
+</html>
