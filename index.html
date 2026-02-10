@@ -6,11 +6,65 @@
     <title>JS Module Project 2 - Food Recipe Search</title>
     <style>
       body {
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", sans-serif;
+        background: #1e1b17;
+        color: white;
+      }
+      .navbar {
+        display: flex;
+        position: sticky;
+        top: 0px;
+        /* justify-content: center; */
+        align-items: center;
+        background: black;
+        /* justify-content: space-evenly; */
+        gap: 463px;
+      }
+      .navbar h1 {
+        position: relative;
+        left: 50px;
+      }
+      .orange {
+        color: orangered;
+      }
+      .navbar-links {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        gap: 48px;
+      }
+      .navbar-links li a {
+        text-decoration: none;
+        color: orange;
+      }
+      .navbar-links li a:hover {
+        color: orangered;
+        text-decoration: underline;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 80%;
+        margin: auto;
+      }
+      .hero p {
+        font-size: 16px;
         font-family:
-          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+          "Segoe UI", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
+      .details {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
       }
       .main-container {
-        background: rgb(251, 248, 255);
         text-align: center;
         padding: 15px;
       }
@@ -19,9 +73,10 @@
         height: auto;
       }
       .userinput {
-        padding: 7px;
+        padding: 13px;
+        width: 300px;
         border: 1px solid #959595;
-        border-radius: 2px;
+        border-radius: 8px;
       }
       .userinput:focus {
         outline: none;
@@ -32,10 +87,11 @@
         color: rgb(231, 86, 2);
       }
       button {
-        padding: 7px;
+        padding: 13px;
         border: 1px solid #959595;
-        border-radius: 2px;
+        border-radius: 8px;
         cursor: pointer;
+        width: 81px;
       }
       .card {
         margin: 4px;
@@ -61,14 +117,60 @@
       .first-container img {
         border-radius: 20px;
       }
+      .meals-image img {
+        position: relative;
+        left: 101px;
+        width: 200px;
+        height: 200px;
+      }
+      .meals-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
       .paragraph::before {
         content: "Food Recipes";
         color: orange;
         font-size: 2.5rem;
       }
+      .applink {
+        position: fixed;
+        bottom: 34px;
+        right: 23px;
+        width: 66px;
+        height: 61px;
+        border-radius: 50%;
+      }
     </style>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>
+          <span class="orange">Peshawar</span>
+          <span class="white">Recipes</span>
+        </h1>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="#"> Home</a></li>
+        <li><a href="#"> About</a></li>
+        <li><a href="#"> Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Welcome to Peshawar Recipes website</h1>
+      <p>
+        Welcome to PeshawarRecipes: An open, crowd-sourced database of recipes
+        from around the world. We offer a free recipe API for anyone wanting to
+        use it, with additional premium features if required.
+      </p>
+      <img
+        src="https://www.themealdb.com/images/separator.jpg"
+        alt="line-image"
+      />
+    </div>
+
     <form
       onsubmit="
         getMeals();
@@ -76,36 +178,71 @@
       "
     >
       <div class="main-container">
-        <h2>Welcome to Food Recipes website</h2>
         <input
           type="text"
           id="userinput"
           class="userinput"
-          placeholder="Search here"
+          placeholder="Search for a Meals"
         />
         <button type="submit">Search</button>
       </div>
       <div id="show-meals"></div>
     </form>
-    <div class="first-container">
-      <div class="paragraph">
-        <p>
-          Welcome to the Food Recipes Collection, where nourishment meets
-          intention. Explore a diverse array of delicious, health-conscious
-          recipes inspired by the yogic lifestyle. Whether you’re looking to
-          energize your morning, rejuvenate after a long day, or celebrate with
-          friends and family.
-        </p>
-        <p>
-          From hearty lacto-vegetarian dishes to refreshing beverages and sweet
-          treats, every recipe is designed to uplift your spirit and nourish
-          your body. Dive into a world of wholesome ingredients, vibrant
-          flavors, and culinary inspiration that aligns with your journey toward
-          a balanced and fulfilling life.
-        </p>
+    <ul class="details">
+      <li><b>Total Meals:</b>598</li>
+      <li><b>Total Ingredients:</b>877</li>
+      <li><b>Images:</b>598</li>
+    </ul>
+    <img
+      src="https://www.themealdb.com/images/separator.jpg"
+      alt="line-image"
+      class="hero"
+    />
+    <div class="meals-list">
+      <h3>Latest Meals</h3>
+      <div class="meals-image">
+        <img
+          src="https://www.themealdb.com/images/media/meals/ip5xtp1769779958.jpg"
+          alt="meal-image"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg"
+          alt="meal-image"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/8cvkcz1766596315.jpg"
+          alt="meal-image"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/arzs741766434335.jpg"
+          alt="meal-img"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/9nh4dl1766435484.jpg"
+          alt="meal-img"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/93iok31766436070.jpg"
+          alt="meal-img"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg"
+          alt="meal-img"
+        />
+        <img
+          src="https://www.themealdb.com/images/media/meals/rw64di1766595573.jpg"
+          alt="meal-img"
+        />
       </div>
-      <img src="./food recipe image.jpg" alt="" />
     </div>
+    <div class="social-media-icon">
+      <img
+        src="./whatsapp-img.png"
+        class="whatsapp applink"
+        alt="whatsapp iage"
+      />
+    </div>
+   
     <script>
       async function getMeals() {
         try {
@@ -115,7 +252,7 @@
             `https://www.themealdb.com/api/json/v1/1/search.php?s=${userInputs}`,
           );
           const dataFromApi = await mealsApi.json();
-          const mealsfromApi = dataFromApi.meals;
+          let mealsfromApi = dataFromApi.meals;
           const mealsRef = document.querySelector("#show-meals");
           mealsRef.innerHTML = "";
           mealsfromApi.forEach((item) => {
